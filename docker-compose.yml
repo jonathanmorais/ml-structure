@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  mlflow-tracking-server:
+    image: foxrider/mlflow-tracking-server:0.2.0
+    container_name: mlflow-tracking-server
+    ports: 
+        - 5000:5000
+    environment: 
+        PORT: 5000
+        FILE_DIR: /mlflow    
+    volumes:
+      - $PWD/mlruns:/mlflow
