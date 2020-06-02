@@ -1,13 +1,11 @@
-version: "3"
-
+version:  '3'
 services:
-  mlflow-tracking-server:
-    image: foxrider/mlflow-tracking-server:0.2.0
-    container_name: mlflow-tracking-server
-    ports: 
-        - 5000:5000
-    environment: 
-        PORT: 5000
-        FILE_DIR: /mlflow    
+  datascience-notebook:
+    image: jupyter/datascience-notebook
     volumes:
-      - $PWD/mlruns:/mlflow
+      - ${PWD}/volumes:/home/jovyan/work
+      - ${PWD}/volumes/arquivos:/home/jovyan/work/datasets
+      - ${PWD}/volumes:/home/jovyan/work/modules
+    ports:
+      - 8888:8888
+    container_name: jupyter_notebook
